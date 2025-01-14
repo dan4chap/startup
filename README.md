@@ -44,7 +44,7 @@ sequenceDiagram
     Login->>Dashboard: View charts of your expenses
     Dashboard->>Dashboard: Interact with charts and input budgeting info
     Dashboard-->>Login: Logout
-    Login-->>Chat: talk with other uses about finances
+    Login-->>Chat: talk with other users about finances
 ```
 
 ### Key features
