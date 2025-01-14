@@ -40,12 +40,11 @@ sequenceDiagram
     User->>Login: Enter login information
     Login->>Account Connecting: See about connecting your financial accounts
     Account Connecting-->>Login: Login
-    Account Connecting->>Account Connecting: Read inspirational quote
-    Login->>Play: Start game
-    Play->>Play: repeat sequences
-    Play->>Play: View other player's game notifications
-    Play-->>Login: Logout
-    Login-->>Scores: view high scores
+    Account Connecting->>Account Connecting: Login to Plaid
+    Login->>Dashboard: View charts of your expenses
+    Dashboard->>Dashboard: Interact with charts and input budgeting info
+    Dashboard-->>Login: Logout
+    Login-->>Chat: talk with other uses about finances
 ```
 
 ### Key features
