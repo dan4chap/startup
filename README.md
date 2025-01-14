@@ -38,8 +38,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 graph TD
     Start[Start] --> Input[Enter a number]
     Input --> Check{Is the number even?}
-    Check -->|Yes| Even[Print "The number is even"]
-    Check -->|No| Odd[Print "The number is odd"]
+    Check -->|Yes| Even[Print "Number is even"]
+    Check -->|No| Odd[Print "Number is odd"]
     Even --> End[End]
     Odd --> End
 ```
