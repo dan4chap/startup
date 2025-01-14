@@ -36,15 +36,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```mermaid
 sequenceDiagram
-    participant User
-    participant System
-    User->>System: Enter a number
-    System->>System: Check if the number is even
-    alt Number is even
-        System->>User: Print "Number is even"
-    else Number is odd
-        System->>User: Print "Number is odd"
-    end
+    actor User
+    User->>Login: Enter login information
+    Login->>Account Connecting: See about connecting your financial accounts
+    Account Connecting-->>Login: Login
+    Account Connecting->>Account Connecting: Read inspirational quote
+    Login->>Play: Start game
+    Play->>Play: repeat sequences
+    Play->>Play: View other player's game notifications
+    Play-->>Login: Logout
+    Login-->>Scores: view high scores
 ```
 
 ### Key features
