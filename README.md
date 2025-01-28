@@ -67,15 +67,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - Three different pages. One just home/login page (index.html), the dashboard page (dashboard.html), and a page to fix your connected bank accounts (accounts.html).
+- [x] **Proper HTML element usage** - I spent a lot of time learning about elements. I used header, footer, main, nav, img, a, fieldset, input, button, form, and many more.
+- [x] **Links** - There are links between each page. Its part of the navigation
+- [x] **Text** - Text is displayed for the dashboard of the user and the accounts page has detail since it is kind of like an about page.
+- [x] **3rd party API placeholder** - The accounts page has the login for Plaid which is the 3rd party API that I will be using to connect the users accounts.
+- [x] **Images** - I didn't put many images because there will mainly be CSS displaying graphs and stuff like that but there is my logo plastered on the website.
+- [x] **Login placeholder** - Placeholder for auth on the login/home page and also for the login required for Plaid on the accounts page.
+- [x] **DB data placeholder** - The budgeting goals will be saved in the database and the progress for each goal as well.
+- [x] **WebSocket placeholder** - I want to have a chat so you can ask for financial advice from your friends. That is what the placeholder chatbox is (named Chap box in my html).
 
 ## 🚀 CSS deliverable
 
