@@ -1,0 +1,239 @@
+/* Apply styles to the whole page */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4edd9;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    
+}
+
+header {
+    min-height: 5vh;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    background-color: #f4edd9;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+/*#8aa696*/
+main {
+    min-height: 70vh;
+    height: 75vh;
+    background-color: #f4edd9;
+    margin: 10px;
+    flex-grow: 1;
+    padding-bottom: 50px;
+    overflow-y: auto;
+}
+
+footer {
+    width: 100%;
+    background-color: #f4edd9;
+    text-align: center;
+    border-radius: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    position: relative;
+}
+
+.container.mb-4 {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    margin: 0px;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 20px;
+    background-color: #f4edd9;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.navbar {
+    display: flex;
+    font-size: 1em;
+    background-color: #f4edd9;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.nav-link {
+    justify-content: right;
+}
+
+
+
+.login-background {
+    background-color: #f4edd9;
+}
+
+.form-label {
+    font-size: 3em;
+    padding: 5px;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    width: 100%;
+    text-align: center;
+}
+
+
+.container.d-flex.justify-content-center.align-items-center {
+    margin-top: 4.3vh;
+    margin-bottom: 4.3vh;
+    height: 68vh;
+    background-color: #8ce7a0;
+    min-width: 60vw;
+    max-width: 90vw;
+    border-radius: 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-control.form-control-xl {
+    font-size: 2em; /* Bigger text */
+    padding: 3.5vh; /* Bigger padding */
+    height: 5vh; /* Taller input */
+    min-width: 40vw;
+    background-color: #fafaf896;
+}
+
+
+/* Form container */
+.form-container {
+    max-width: 75vw;
+    padding: 70px;
+    font-size: 1em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content inside */
+}
+
+/* Input fields */
+.form-container input {
+    font-size: 26px;
+    padding: 10px;
+}
+
+/* Submit button */
+.btn-custom {
+    font-size: 26px;
+    padding: 15px;
+    width: 100%;
+}
+
+
+/* Style for the placeholder areas in the left, middle, and right sections */
+#graph-placeholder {
+    height: 300px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#chat-box-placeholder {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#chat-box-placeholder .message {
+    background: #e9ecef;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+#chat-box-placeholder .message:last-child {
+    text-align: right;
+    background: #007BFF;
+    color: white;
+}
+
+/* Style for progress bars */
+.progress-bar {
+    border-radius: 10px;
+}
+
+/* Button for adding new goals */
+button.goal {
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+button.goal:hover {
+    background-color: #218838;
+}
+
+/* Style for the dashboard header */
+#account-balance {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.bg-green {
+    background-color: #8ce7a0;
+}
+
+.container-fluid {
+    min-height: 78vh;
+}
+
+.bg-tan {
+    background-color: #f4edd9;
+    border-radius: 50px;
+    margin-top: 2vh;
+}
+
+
+
+.dashboard-section {
+    overflow-y: auto;
+    height: 90vh;
+}
+
+/* Ensure all sections in the main row have equal height */
+/* Make all sections fill the available height */
+.col-md-6, .col-lg-4 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure that content inside sections fully stretches */
+.flex-grow-1 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Allow lists and other elements to take up full space */
+ul.flex-grow-1 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-name {
+    font-size: 1rem;
+    line-height: 30px; /* Matches the icon height */
+    vertical-align: middle;
+}
