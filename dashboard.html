@@ -1,117 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- Tell browsers not to scale the viewport automatically -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Easy Expenses</title>
-    <link rel="icon" href="stock_icon.png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css" />
-    
-  </head>
-  <body>
-    <!-- Use header, main, and footer elements to give semantic structure -->
-    <header>
-      <!-- Bootstrap navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="dashboard.html">Easy Expenses</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <ul class="navbar-nav">
+<head>
+<meta charset="UTF-8" />
+<!-- Tell browsers not to scale the viewport automatically -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Easy Expenses</title>
+<link rel="icon" href="stock_icon.png" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+<!-- Use header, main, and footer elements to give semantic structure -->
+<header>
+    <!-- Bootstrap navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="dashboard.html">Easy Expenses</a>
+    <!-- Navbar toggler button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Login</a>
+                <a class="nav-link" href="index.html">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="dashboard.html">Dashboard</a>
+                <a class="nav-link" href="dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="accounts.html">Connected Accounts</a>
+                <a class="nav-link" href="accounts.html">Connected Accounts</a>
             </li>
-          </ul>
+        </ul>
+    </div>
+    </nav>
+</header>
+
+<main class="container-fluid bg-tan p-5">
+    <div class="row gy-3">
+        <!-- Left Section: Dashboard & Recent Transactions -->
+        <div class="col-md-6 col-lg-6 d-flex flex-column">
+            <div class="bg-green p-3 text-black text-center rounded shadow-sm flex-grow-1">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="bg-green mt-3 text-black text-center rounded shadow-sm p-4 flex-grow-1">
+                <h3>Recent Transactions</h3>
+                <ul>
+                    <li>Transaction 1: $100.00</li>
+                    <li>Transaction 2: $50.00</li>
+                </ul>
+            </div>
+            <div class="bg-green mt-3 text-black text-center rounded shadow-sm p-4 flex-grow-1" id="graph-placeholder">
+                <p>Recent Transaction Graph will be displayed here</p>
+            </div>
         </div>
-      </nav>
-      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
-    </header>
 
-    <main class="container-fluid bg-tan p-5">
-      <div class="row gy-3">
-          <!-- Left Section: Dashboard & Recent Transactions -->
-          <div class="col-md-6 col-lg-6 d-flex flex-column">
-              <div class="bg-green p-3 text-black text-center rounded shadow-sm flex-grow-1">
-                  <h1>Dashboard</h1>
-              </div>
-              <div class="bg-green mt-3 text-black text-center rounded shadow-sm p-4 flex-grow-1">
-                  <h3>Recent Transactions</h3>
-                  <ul>
-                      <li>Transaction 1: $100.00</li>
-                      <li>Transaction 2: $50.00</li>
-                  </ul>
-              </div>
-              <div class="bg-green mt-3 text-black text-center rounded shadow-sm p-4 flex-grow-1" id="graph-placeholder">
-                  <p>Recent Transaction Graph will be displayed here</p>
-              </div>
-          </div>
-  
-          <!-- Middle Section: Budgeting Goals -->
-          <div class="col-md-6 col-lg-3 d-flex flex-column">
-              <div class="bg-green p-4 rounded shadow-sm flex-grow-1 d-flex flex-column">
-                  <h2 class="text-center text-dark">Budgeting Goals</h2>
-                  <div class="goal mb-4 flex-grow-1">
-                      <h4 class="text-primary">Emergency Fund</h4>
-                      <p>Goal: $1,000</p>
-                      <div class="progress" style="height: 20px;">
-                          <div class="progress-bar bg-success" style="width: 50%"></div>
-                      </div>
-                      <p>Progress: $500 / $1,000</p>
-                  </div>
-                  <button class="btn btn-primary w-100 mt-auto">Add New Goal</button>
-              </div>
-          </div>
-  
-          <!-- Right Section: Chat Box -->
-          <div class="col-md-6 col-lg-3 d-flex flex-column">
-              <div id="chat-box-placeholder" class="bg-green p-4 rounded shadow-sm d-flex flex-column h-100 bg-green">
-                  <div class="bg-primary text-white p-3 text-center rounded-top">
-                      Chat Box
-                  </div>
-                  <div class="flex-grow-1 p-3 overflow-auto">
-                      <div class="message mb-3">
-                          <div class="bg-light p-2 rounded">
-                              Hello! This is a placeholder for chat messages.
-                          </div>
-                      </div>
-                      <div class="message mb-3 text-end">
-                          <div class="bg-primary text-white p-2 rounded">
-                              Hi! Thanks for the placeholder!
-                          </div>
-                      </div>
-                  </div>
-                  <div class="d-flex p-2 border-top">
-                      <input type="text" class="form-control me-2" placeholder="Type a message...">
-                      <button class="btn btn-primary">➤</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </main>
-  
-  
+        <!-- Middle Section: Budgeting Goals -->
+        <div class="col-md-6 col-lg-3 d-flex flex-column">
+            <div class="bg-green p-4 rounded shadow-sm flex-grow-1 d-flex flex-column">
+                <h2 class="text-center text-dark">Budgeting Goals</h2>
+                <div class="goal mb-4 flex-grow-1">
+                    <h4 class="text-primary">Emergency Fund</h4>
+                    <p>Goal: $1,000</p>
+                    <div class="progress" style="height: 20px;">
+                        <div class="progress-bar bg-success" style="width: 50%"></div>
+                    </div>
+                    <p>Progress: $500 / $1,000</p>
+                </div>
+                <button class="btn btn-primary w-100 mt-auto">Add New Goal</button>
+            </div>
+        </div>
 
-    <footer class="text-center">
-      <div class="container p-2">
-          <section class="mb-1 d-flex align-items-center justify-content-center gap-3">
-              <!-- GitHub Icon -->
-              <a data-mdb-ripple-init href="https://github.com/dan4chap/startup" role="button" data-mdb-ripple-color="dark">
-                  <img src="github_icon.png" alt="GitHub Icon" style="width: 30px; height: 30px;">
-              </a>
-              <!-- Name -->
-              <span class="footer-name">Daniel Chapdelaine</span>
-          </section>
-      </div>
-    </footer>
-  
-  </body>
+        <!-- Right Section: Chat Box -->
+        <div class="col-md-6 col-lg-3 d-flex flex-column">
+            <div id="chat-box-placeholder" class="bg-green p-4 rounded shadow-sm d-flex flex-column h-100 bg-green">
+                <div class="bg-primary text-white p-3 text-center rounded-top">
+                    Chat Box
+                </div>
+                <div class="flex-grow-1 p-3 overflow-auto">
+                    <div class="message mb-3">
+                        <div class="bg-light p-2 rounded">
+                            Hello! This is a placeholder for chat messages.
+                        </div>
+                    </div>
+                    <div class="message mb-3 text-end">
+                        <div class="bg-primary text-white p-2 rounded">
+                            Hi! Thanks for the placeholder!
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex p-2 border-top">
+                    <input type="text" class="form-control me-2" placeholder="Type a message...">
+                    <button class="btn btn-primary">➤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<footer class="text-center">
+    <div class="container p-2">
+        <section class="mb-1 d-flex align-items-center justify-content-center gap-3">
+            <!-- GitHub Icon -->
+            <a data-mdb-ripple-init href="https://github.com/dan4chap/startup" role="button" data-mdb-ripple-color="dark">
+                <img src="github_icon.png" alt="GitHub Icon" style="width: 30px; height: 30px;">
+            </a>
+            <!-- Name -->
+            <span class="footer-name">Daniel Chapdelaine</span>
+        </section>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 </html>

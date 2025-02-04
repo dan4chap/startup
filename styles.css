@@ -9,8 +9,7 @@ html, body {
 }
 
 header {
-    min-height: 5vh;
-    margin: 0px;
+    margin: 4px;
     padding: 0px;
     display: flex;
     background-color: #f4edd9;
@@ -56,6 +55,7 @@ footer {
 }
 
 .navbar {
+    width: 100%;
     display: flex;
     font-size: 1em;
     background-color: #f4edd9;
@@ -64,10 +64,19 @@ footer {
     border-top-right-radius: 0px;
 }
 
-.nav-link {
-    justify-content: right;
+.navbar-toggler {
+    margin-right: 15px;
 }
 
+.nav-link {
+    justify-content: right;
+    text-align: center;
+    padding: 4px;
+}
+
+.navbar-nav {
+    padding: 0px;
+}
 
 
 .login-background {
@@ -97,7 +106,6 @@ footer {
 }
 
 .form-control.form-control-xl {
-    font-size: 2em; /* Bigger text */
     padding: 3.5vh; /* Bigger padding */
     height: 5vh; /* Taller input */
     min-width: 40vw;
@@ -111,9 +119,10 @@ footer {
     padding: 70px;
     font-size: 1em;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 30px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     min-height: 40vh;
+    max-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centers content inside */
@@ -236,4 +245,26 @@ ul.flex-grow-1 {
     font-size: 1rem;
     line-height: 30px; /* Matches the icon height */
     vertical-align: middle;
+}
+
+.picture-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.account-container {
+    max-width: 75vw;
+    max-height: 60vh;
+    padding: 40px;
+    font-size: 1em;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content inside */
 }
