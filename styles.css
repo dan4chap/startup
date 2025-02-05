@@ -324,7 +324,7 @@ ul.flex-grow-1 {
 .picture-box img {
     max-width: 100%; /* Ensure image doesn't exceed container width */
     height: auto; /* Maintain aspect ratio */
-    width: 100%; /* Allow image to shrink */
+    width: auto; /* Allow image to shrink */
     max-height: 30vh; /* Limit image height to 30% of viewport height */
 }
 
