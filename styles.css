@@ -277,7 +277,7 @@ ul.flex-grow-1 {
 
 /* Base styles for the account container */
 .account-container {
-    max-width: 900px; /* Adjust as needed */
+    max-width: 1200px; /* Adjust as needed */
     max-height: 60vh; /* Set maximum height to 60% of viewport height */
     margin: 0 auto;
     padding: 20px;
@@ -292,7 +292,7 @@ ul.flex-grow-1 {
 
 /* Base font size for the text */
 .account-container p {
-    font-size: 1rem; /* Default font size */
+    font-size: 1.5rem; /* Default font size */
     line-height: 1.6;
     margin-bottom: 1rem;
     text-align: center; /* Center-align text */
