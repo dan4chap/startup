@@ -93,6 +93,15 @@ footer {
     text-align: center;
 }
 
+.form-text {
+    font-size: 1.0em;
+    padding: 4px;
+    display: flex;
+    justify-content: left; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    width: 100%;
+    text-align: center;
+}
 
 .container.d-flex.justify-content-center.align-items-center {
     margin-top: 2.3vh;
@@ -335,6 +344,9 @@ ul.flex-grow-1 {
 
 @media (max-width: 768px) {
     .container {
+      padding: 30px; /* Smaller padding for tablets */
+    }
+    .form-container {
       padding: 30px; /* Smaller padding for tablets */
     }
 }
