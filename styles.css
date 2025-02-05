@@ -95,14 +95,19 @@ footer {
 
 
 .container.d-flex.justify-content-center.align-items-center {
-    margin-top: 4.3vh;
-    margin-bottom: 4.3vh;
-    height: 68vh;
+    margin-top: 2.3vh;
+    margin-bottom: 2.3vh;
+    height: 72vh;
     background-color: #8ce7a0;
     min-width: 60vw;
     max-width: 90vw;
     border-radius: 50px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh; /* Full viewport height */
+    padding: 50px;
 }
 
 .form-control.form-control-xl {
@@ -255,7 +260,7 @@ ul.flex-grow-1 {
     padding: 20px;
 }
 
-.account-container {
+/*.account-container {
     max-width: 75vw;
     max-height: 60vh;
     padding: 40px;
@@ -266,5 +271,76 @@ ul.flex-grow-1 {
     min-height: 40vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centers content inside */
+    justify-content: center;
+}
+*/
+
+/* Base styles for the account container */
+.account-container {
+    max-width: 900px; /* Adjust as needed */
+    max-height: 60vh; /* Set maximum height to 60% of viewport height */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Base font size for the text */
+.account-container p {
+    font-size: 1rem; /* Default font size */
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: center; /* Center-align text */
+}
+
+/* Responsive font sizes using media queries */
+@media (max-width: 768px) {
+    .account-container p {
+      font-size: 0.9rem; /* Slightly smaller font size for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .account-container p {
+      font-size: 0.8rem; /* Even smaller font size for mobile phones */
+    }
+}
+
+/* Ensure the image scales down on smaller screens */
+.picture-box img {
+    max-width: 100%; /* Ensure image doesn't exceed container width */
+    height: auto; /* Maintain aspect ratio */
+    width: 100%; /* Allow image to shrink */
+    max-height: 30vh; /* Limit image height to 30% of viewport height */
+}
+
+/* Adjust image size for very small screens */
+@media (max-width: 480px) {
+    .picture-box img {
+      max-height: 20vh; /* Further reduce image height on mobile */
+    }
+}
+
+/* Responsive margins for the outer container */
+@media (max-width: 1200px) {
+    .container {
+      padding: 40px; /* Slightly smaller padding for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+      padding: 30px; /* Smaller padding for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+      padding: 20px; /* Smallest padding for mobile phones */
+    }
 }
