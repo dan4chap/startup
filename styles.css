@@ -349,6 +349,10 @@ ul.flex-grow-1 {
     .form-container {
       padding: 30px; /* Smaller padding for tablets */
     }
+    .container.d-flex.justify-content-center.align-items-center {
+      padding: 20px; /* Smaller padding for tablets */
+        max-height: 65vh;
+    }
 }
 
 @media (max-width: 480px) {
