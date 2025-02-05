@@ -81,12 +81,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - I used a styling css file
+- [x] **Navigation elements** - Bootstrap NavBar with adjustments
+- [x] **Responsive to window resizing** - Bootstrap and `display:flex' did most the work here. I literally spent hours making this work properly
+- [x] **Application elements** - I used a lot of display:flex to get things to align correctly.
+- [x] **Application text content** - Set text to Times New Roman
+- [x] **Application images** - My logo appears on the connected accounts page. Also I added github icon at the bottom.
 
 ## 🚀 React part 1: Routing deliverable
 
