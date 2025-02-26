@@ -1,13 +1,13 @@
 import React from 'react';
 import './app.css';
 
-export function Dashboard() {
+export function Dashboard({ user }) {
     return (  
     <main className="container-fluid bg-tan p-5">
         <div className="row gy-3">
             <div className="col-md-6 col-lg-6 d-flex flex-column">
                 <div className="bg-green p-3 text-black text-center rounded shadow-sm flex-grow-1">
-                    <h1>Dashboard</h1>
+                    <h1>{user}</h1>
                 </div>
                 <div className="bg-green mt-3 text-black text-center rounded shadow-sm p-4 flex-grow-1">
                     <h3>Recent Transactions</h3>
