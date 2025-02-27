@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './app.css';
 
 export function Dashboard({ user }) {
+    const [transaction1, setTransaction1] = useState(0);
+    const [transaction2, setTransaction2] = useState(0);
+    const [progress, setProgress] = useState(0);
+    const [goals, setGoals] = useState([
+        { name: 'Emergency Fund', goal: 1000, progress: 0 }
+    ]);
+
+    useEffect(() => {
+        const storedTransaction1 = localStorage.getItem('transaction1');
+        const storedTransaction2 = localStorage.getItem('transaction2');
+        const storedProgress = localStorage.getItem('progress');
+
+        if (storedTransaction1) setTransaction1(parseFloat(storedTransaction1));
+        if (storedTransaction2) setTransaction2(parseFloat(storedTransaction2));
+        if (storedProgress) setProgress(parseFloat(storedProgress));
+    }, []);
+
+    const addNewGoal = () => {
+        setGoals([...goals, { name: 'New Goal', goal: 1000, progress: 0 }]);
+    };
+
     return (  
     <main className="container-fluid bg-tan p-5">
         <div className="row gy-3">
@@ -12,8 +33,8 @@ export function Dashboard({ user }) {
                 <div className="bg-green mt-3 text-black text-center rounded shadow-sm p-4 flex-grow-1">
                     <h3>Recent Transactions</h3>
                     <ul>
-                        <li>Transaction 1: $10.00</li>
-                        <li>Transaction 2: $50.00</li>
+                        <li>Transaction 1: ${transaction1.toFixed(2)}</li>
+                        <li>Transaction 2: ${transaction2.toFixed(2)}</li>
                     </ul>
                 </div>
                 <div className="bg-green mt-3 text-black text-center rounded shadow-sm p-4 flex-grow-1" id="graph-placeholder">
@@ -24,15 +45,17 @@ export function Dashboard({ user }) {
             <div className="col-md-6 col-lg-3 d-flex flex-column">
                 <div className="bg-green p-4 rounded shadow-sm flex-grow-1 d-flex flex-column">
                     <h2 className="text-center text-dark">Budgeting Goals</h2>
-                    <div className="goal mb-4 flex-grow-1">
-                        <h4 className="text-primary">Emergency Fund</h4>
-                        <p>Goal: $1,000</p>
-                        <div className="progress" style={{ height: "20px" }}>
-                            <div className="progress-bar bg-success" style={{ width: "30px"}}></div>
+                    {goals.map((goal, index) => (
+                        <div key={index} className="goal mb-4 flex-grow-1">
+                            <h4 className="text-primary">{goal.name}</h4>
+                            <p>Goal: ${goal.goal}</p>
+                            <div className="progress" style={{ height: "20px" }}>
+                                <div className="progress-bar bg-success" style={{ width: `${goal.progress}%`}}></div>
+                            </div>
+                            <p>Progress: ${goal.progress * 10} / ${goal.goal}</p>
                         </div>
-                        <p>Progress: $500 / $1,000</p>
-                    </div>
-                    <button className="btn btn-primary w-100 mt-auto">Add New Goal</button>
+                    ))}
+                    <button className="btn btn-primary w-100 mt-auto" onClick={addNewGoal}>Add New Goal</button>
                 </div>
             </div>
     
