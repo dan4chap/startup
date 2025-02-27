@@ -8,6 +8,11 @@ export function Dashboard({ user }) {
     const [goals, setGoals] = useState([
         { name: 'Emergency Fund', goal: 1000, progress: 0 }
     ]);
+    const [goalName, setGoalName] = useState('');
+    const [goalAmount, setGoalAmount] = useState('');
+    const [goalProgress, setGoalProgress] = useState('');
+    const [messages, setMessages] = useState([]);
+    const [newMessage, setNewMessage] = useState('');
 
     useEffect(() => {
         const storedTransaction1 = localStorage.getItem('transaction1');
@@ -20,7 +25,19 @@ export function Dashboard({ user }) {
     }, []);
 
     const addNewGoal = () => {
-        setGoals([...goals, { name: 'New Goal', goal: 1000, progress: 0 }]);
+        setGoals([...goals, { name: goalName, goal: parseFloat(goalAmount), progress: parseFloat(goalProgress) }]);
+        setGoalName('');
+        setGoalAmount('');
+        setGoalProgress('');
+    };
+
+    const removeGoal = (index) => {
+        setGoals(goals.filter((_, i) => i !== index));
+    };
+
+    const addMessage = () => {
+        setMessages([...messages, newMessage]);
+        setNewMessage('');
     };
 
     return (  
@@ -52,9 +69,13 @@ export function Dashboard({ user }) {
                             <div className="progress" style={{ height: "20px" }}>
                                 <div className="progress-bar bg-success" style={{ width: `${goal.progress}%`}}></div>
                             </div>
-                            <p>Progress: ${goal.progress * 10} / ${goal.goal}</p>
+                            <p>Progress: ${goal.progress} / ${goal.goal}</p>
+                            <button className="btn btn-danger" onClick={() => removeGoal(index)}>Remove</button>
                         </div>
                     ))}
+                    <input type="text" className="form-control mb-2" placeholder="Goal Name" value={goalName} onChange={(e) => setGoalName(e.target.value)} />
+                    <input type="number" className="form-control mb-2" placeholder="Goal Amount" value={goalAmount} onChange={(e) => setGoalAmount(e.target.value)} />
+                    <input type="number" className="form-control mb-2" placeholder="Progress Amount" value={goalProgress} onChange={(e) => setGoalProgress(e.target.value)} />
                     <button className="btn btn-primary w-100 mt-auto" onClick={addNewGoal}>Add New Goal</button>
                 </div>
             </div>
@@ -65,20 +86,17 @@ export function Dashboard({ user }) {
                         Chat Box
                     </div>
                     <div className="flex-grow-1 p-3 overflow-auto">
-                        <div className="message mb-3">
-                            <div className="bg-light p-2 rounded">
-                                Hello! This is a placeholder for chat messages.
+                        {messages.map((message, index) => (
+                            <div key={index} className={`message mb-3 ${index % 2 === 0 ? '' : 'text-end'}`}>
+                                <div className={`bg-${index % 2 === 0 ? 'light' : 'primary'} text-${index % 2 === 0 ? 'black' : 'white'} p-2 rounded`}>
+                                    {message}
+                                </div>
                             </div>
-                        </div>
-                        <div className="message mb-3 text-end">
-                            <div className="bg-primary text-white p-2 rounded">
-                                Hi! Thanks for the placeholder!
-                            </div>
-                        </div>
+                        ))}
                     </div>
                     <div className="d-flex p-2 border-top">
-                        <input type="text" className="form-control me-2" placeholder="Type a message..."/>
-                        <button className="btn btn-primary">➤</button>
+                        <input type="text" className="form-control me-2" placeholder="Type a message..." value={newMessage} onChange={(e) => setNewMessage(e.target.value)} />
+                        <button className="btn btn-primary" onClick={addMessage}>➤</button>
                     </div>
                 </div>
             </div>

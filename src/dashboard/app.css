@@ -316,6 +316,11 @@ ul.flex-grow-1 {
     text-align: center; /* Center-align text */
 }
 
+.progress {
+    height: 20px;
+    border-radius: 20px;
+}
+
 /* Responsive font sizes using media queries */
 @media (max-width: 768px) {
     .account-container p {
