@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './app.css';
 
 export function Dashboard({ user }) {
+    let displayName = user.split('@')[0];
     const [transaction1, setTransaction1] = useState(0);
     const [transaction2, setTransaction2] = useState(0);
     const [progress, setProgress] = useState(0);
@@ -13,6 +14,7 @@ export function Dashboard({ user }) {
     const [goalProgress, setGoalProgress] = useState('');
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
+    const [isFetching, setIsFetching] = useState(false);
 
     useEffect(() => {
         const storedTransaction1 = localStorage.getItem('transaction1');
@@ -40,12 +42,23 @@ export function Dashboard({ user }) {
         setNewMessage('');
     };
 
+    const fetchGraphData = async () => {
+        setIsFetching(true);
+        // Simulate a fetch call
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        setIsFetching(false);
+    };
+
+    useEffect(() => {
+        fetchGraphData();
+    }, []);
+
     return (  
     <main className="container-fluid bg-tan p-5">
         <div className="row gy-3">
             <div className="col-md-6 col-lg-6 d-flex flex-column">
                 <div className="bg-green p-3 text-black text-center rounded shadow-sm flex-grow-1">
-                    <h1>{user}</h1>
+                    <h1>Welcome, {displayName}</h1>
                 </div>
                 <div className="bg-green mt-3 text-black text-center rounded shadow-sm p-4 flex-grow-1">
                     <h3>Recent Transactions</h3>
@@ -55,7 +68,11 @@ export function Dashboard({ user }) {
                     </ul>
                 </div>
                 <div className="bg-green mt-3 text-black text-center rounded shadow-sm p-4 flex-grow-1" id="graph-placeholder">
-                    <p>Recent Transaction Graph will be displayed here</p>
+                    {isFetching ? (
+                        <img className="loadingimg" src="stock_icon.png" alt="Loading..." />
+                    ) : (
+                        <p>Recent Transaction Graph will be displayed here</p>
+                    )}
                 </div>
             </div>
     

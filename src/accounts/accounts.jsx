@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './app.css';
 
 export function Accounts() {
+    const [accountsLinked, setAccountsLinked] = useState(false);
+
+    useEffect(() => {
+        const linked = localStorage.getItem('accounts_linked');
+        if (linked) {
+            setAccountsLinked(true);
+        }
+    }, []);
+
+    const linkAccounts = () => {
+        localStorage.setItem('accounts_linked', 'true');
+        setAccountsLinked(true);
+    };
+
+    const removeAccounts = () => {
+        localStorage.removeItem('accounts_linked');
+        setAccountsLinked(false);
+    };
+
     return (  
     <main>
     <div className="login-background">
@@ -16,6 +35,12 @@ export function Accounts() {
             comes from Plaid.
             </p>
             <p style={{padding_bottom: "10px"}}>Plaid Login Here:</p>
+            
+            {accountsLinked ? (
+                <button className="btn btn-danger" onClick={removeAccounts}>Remove Accounts</button>
+            ) : (
+                <button className="btn btn-primary" onClick={linkAccounts}>Link Accounts</button>
+            )}
     
         </div>
         </div>
