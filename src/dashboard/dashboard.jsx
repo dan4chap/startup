@@ -67,7 +67,7 @@ export function Dashboard({ user }) {
                             <h4 className="text-primary">{goal.name}</h4>
                             <p>Goal: ${goal.goal}</p>
                             <div className="progress" style={{ height: "20px" }}>
-                                <div className="progress-bar bg-success" style={{ width: `${goal.progress}%`}}></div>
+                                <div className="progress-bar bg-success" style={{ width: `${goal.progress/goal.goal * 100}%`}}></div>
                             </div>
                             <p>Progress: ${goal.progress} / ${goal.goal}</p>
                             <button className="btn btn-danger" onClick={() => removeGoal(index)}>Remove</button>
