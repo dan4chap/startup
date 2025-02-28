@@ -1,11 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './app.css';
 
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Dashboard } from './dashboard/dashboard';
 import { Accounts } from './accounts/accounts';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 export default function App() {
     const [user, setUser] = React.useState(localStorage.getItem('user') || null);
@@ -20,33 +22,27 @@ export default function App() {
         <BrowserRouter>
             <div className="app">
                 <header>
-                    <nav className="navbar navbar-expand-lg navbar-light">
-                        <NavLink className="navbar-brand" to="">Easy Expenses</NavLink>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <ul className="navbar-nav">
-                                <li className="nav-item active">
-                                    {user ? (
-                                        <NavLink className="nav-link" to="/" onClick={handleLogout}>Logout</NavLink>
-                                    ) : (
-                                        <NavLink className="nav-link" to="/">Login</NavLink>
-                                    )}
-                                </li>
-                                {user && (
-                                    <>
-                                        <li className="nav-item">
-                                            <NavLink className="nav-link" to="/dashboard">Dashboard</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink className="nav-link" to="/accounts">Connected Accounts</NavLink>
-                                        </li>
-                                    </>
-                                )}
-                            </ul>
-                        </div>
-                    </nav>
+                    <Navbar className="navbar" expand="sm">
+                    <Container className="navbar">
+                        <Navbar.Brand as={NavLink} to="/">Easy Expenses</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="navbarNavAltMarkup" />
+                        <Navbar.Collapse id="navbarNavAltMarkup">
+                        <Nav className="ms-auto">
+                            {user ? (
+                            <Nav.Link as={NavLink} to="/" onClick={handleLogout}>Logout</Nav.Link>
+                            ) : (
+                            <Nav.Link as={NavLink} to="/">Login</Nav.Link>
+                            )}
+                            {user && (
+                            <>
+                                <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
+                                <Nav.Link as={NavLink} to="/accounts">Connected Accounts</Nav.Link>
+                            </>
+                            )}
+                        </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+                    </Navbar>
                 </header>
 
                 <Routes>
