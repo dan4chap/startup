@@ -22,22 +22,22 @@ export default function App() {
         <BrowserRouter>
             <div className="app">
                 <header>
-                    <Navbar className="navbar" expand="sm">
-                    <Container className="navbar">
+                    <Navbar className="colorAccent" expand="lg">
+                    <Container className="justPadding">
                         <Navbar.Brand as={NavLink} to="/">Easy Expenses</Navbar.Brand>
                         <Navbar.Toggle aria-controls="navbarNavAltMarkup" />
                         <Navbar.Collapse id="navbarNavAltMarkup">
                         <Nav className="ms-auto">
+                            {user ? (
+                            <Nav.Link as={NavLink} to="/" onClick={handleLogout}>Logout</Nav.Link>
+                            ) : (
+                            <Nav.Link as={NavLink} to="/">Login</Nav.Link>
+                            )}
                             {user && (
                             <>
                                 <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
                                 <Nav.Link as={NavLink} to="/accounts">Connected Accounts</Nav.Link>
                             </>
-                            )}
-                            {user ? (
-                            <Nav.Link as={NavLink} to="/" onClick={handleLogout}>Logout</Nav.Link>
-                            ) : (
-                            <Nav.Link as={NavLink} to="/">Login</Nav.Link>
                             )}
                         </Nav>
                         </Navbar.Collapse>

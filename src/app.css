@@ -78,6 +78,14 @@ footer {
     padding: 0px;
 }
 
+.navbar-color {
+    background-color: #f4edd9;
+}
+
+.navbar.container {
+    padding: 0px;
+}
+
 
 .login-background {
     background-color: #f4edd9;
@@ -224,6 +232,15 @@ button.goal:hover {
     background-color: #f4edd9;
     border-radius: 50px;
     margin-top: 2vh;
+}
+
+.colorAccent {
+    color: #f4edd9;
+    background-color: #f4edd9;
+}
+
+.justPadding.container {
+    padding: 0px;
 }
 
 
