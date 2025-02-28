@@ -28,16 +28,16 @@ export default function App() {
                         <Navbar.Toggle aria-controls="navbarNavAltMarkup" />
                         <Navbar.Collapse id="navbarNavAltMarkup">
                         <Nav className="ms-auto">
-                            {user ? (
-                            <Nav.Link as={NavLink} to="/" onClick={handleLogout}>Logout</Nav.Link>
-                            ) : (
-                            <Nav.Link as={NavLink} to="/">Login</Nav.Link>
-                            )}
                             {user && (
                             <>
                                 <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
                                 <Nav.Link as={NavLink} to="/accounts">Connected Accounts</Nav.Link>
                             </>
+                            )}
+                            {user ? (
+                            <Nav.Link as={NavLink} to="/" onClick={handleLogout}>Logout</Nav.Link>
+                            ) : (
+                            <Nav.Link as={NavLink} to="/">Login</Nav.Link>
                             )}
                         </Nav>
                         </Navbar.Collapse>
