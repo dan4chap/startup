@@ -44,14 +44,14 @@ footer {
 }
 
 .navbar-brand {
-    margin: 0px;
     font-size: 2em;
     font-weight: bold;
-    padding: 20px;
+    padding: 0px;
     background-color: #f4edd9;
     border-radius: 20px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+    justify-content: left;
 }
 
 .navbar {
@@ -76,6 +76,7 @@ footer {
 
 .navbar-nav {
     padding: 0px;
+    margin-right: -20px;
 }
 
 .navbar-color {
@@ -237,6 +238,8 @@ button.goal:hover {
 .colorAccent {
     color: #f4edd9;
     background-color: #f4edd9;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .justPadding.container {

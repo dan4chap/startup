@@ -23,27 +23,42 @@ export default function App() {
             <div className="app">
                 <header>
                     <Navbar className="colorAccent" expand="lg">
-                    <Container className="justPadding">
-                        <Navbar.Brand as={NavLink} to="/">Easy Expenses</Navbar.Brand>
+                        <Container className="justPadding">
+                        {/* Brand aligned to the left */}
+                        <Navbar.Brand as={NavLink} to="/" className="me-auto">
+                            Easy Expenses
+                        </Navbar.Brand>
+
+                        {/* Toggler button for mobile */}
                         <Navbar.Toggle aria-controls="navbarNavAltMarkup" />
+
+                        {/* Nav items aligned to the right */}
                         <Navbar.Collapse id="navbarNavAltMarkup">
-                        <Nav className="ms-auto">
+                            <Nav className="ms-auto">
                             {user ? (
-                            <Nav.Link as={NavLink} to="/" onClick={handleLogout}>Logout</Nav.Link>
+                                <Nav.Link as={NavLink} to="/" onClick={handleLogout}>
+                                Logout
+                                </Nav.Link>
                             ) : (
-                            <Nav.Link as={NavLink} to="/">Login</Nav.Link>
+                                <Nav.Link as={NavLink} to="/">
+                                Login
+                                </Nav.Link>
                             )}
                             {user && (
-                            <>
-                                <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
-                                <Nav.Link as={NavLink} to="/accounts">Connected Accounts</Nav.Link>
-                            </>
+                                <>
+                                <Nav.Link as={NavLink} to="/dashboard">
+                                    Dashboard
+                                </Nav.Link>
+                                <Nav.Link as={NavLink} to="/accounts">
+                                    Connected Accounts
+                                </Nav.Link>
+                                </>
                             )}
-                        </Nav>
+                            </Nav>
                         </Navbar.Collapse>
-                    </Container>
+                        </Container>
                     </Navbar>
-                </header>
+                    </header>
 
                 <Routes>
                     <Route path='/' element={<Login setUser={setUser} />} exact />
