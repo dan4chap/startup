@@ -12,7 +12,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 export default function App() {
     const [user, setUser] = React.useState(localStorage.getItem('user') || null);
 
-    // Function to handle logout
+    // Func to handle logout
     const handleLogout = () => {
         localStorage.removeItem('user'); // Remove user from localStorage
         setUser(null); // Clear the user state
