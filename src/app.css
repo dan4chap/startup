@@ -54,6 +54,10 @@ footer {
     justify-content: left;
 }
 
+a.me-auto.navbar-brand.active {
+    padding: 0px;
+}
+
 .navbar {
     width: 100%;
     display: flex;

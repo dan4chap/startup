@@ -25,7 +25,7 @@ export default function App() {
                     <Navbar className="colorAccent" expand="lg">
                         <Container className="justPadding">
                         {/* Brand aligned to the left */}
-                        <Navbar.Brand as={NavLink} to="/" className="me-auto">
+                        <Navbar.Brand as={NavLink} to="/dashboard" className="me-auto">
                             Easy Expenses
                         </Navbar.Brand>
 
