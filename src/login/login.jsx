@@ -11,12 +11,10 @@ export function Login({ setUser }) {
 
     async function loginUser() {
         loginOrCreate(`/api/auth/login`);
-        navigate('/dashboard');
     }
 
     async function createUser() {
         loginOrCreate(`/api/auth/create`);
-        navigate('/dashboard');
     }
 
     function textChange(e) {
@@ -35,8 +33,10 @@ export function Login({ setUser }) {
         
             if (response?.status === 200) {
                 const body = await response.json();
+                console.log('Login/create response:', body);
                 localStorage.setItem('userName', body.email); // Store user email
                 setUser(body.email); // Update user state
+                navigate('/dashboard');
             } else {
                 const body = await response.json();
                 setDisplayError(`⚠ Error: ${body.msg}`);
@@ -45,6 +45,7 @@ export function Login({ setUser }) {
             console.error('Error during login/create:', error);
         }
     }
+        
 
     return (  
     <main className="container-fluid">
@@ -53,7 +54,7 @@ export function Login({ setUser }) {
         <div className="form-container">
                 <div className="mb-4">
                     <label htmlFor="exampleInputEmail1" className="form-label">Login</label>
-                    <input type="email" className="form-control form-control-xl fs-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder='your@email.com'/>
+                    <input type="email" className="form-control form-control-xl fs-2" id="exampleInputEmail1" aria-describedby="emailHelp" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder='your@email.com'/>
                 </div>
                 <div className="mb-4">
                     <input type="password" className="form-control form-control-xl fs-2" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)} placeholder='password'/>

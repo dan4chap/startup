@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import GoalManager from './goalmanager';
 import './app.css';
 
 export function Dashboard({ user }) {
@@ -75,27 +76,8 @@ export function Dashboard({ user }) {
                     )}
                 </div>
             </div>
-    
-            <div className="col-md-6 col-lg-3 d-flex flex-column">
-                <div className="bg-green p-4 rounded shadow-sm flex-grow-1 d-flex flex-column">
-                    <h2 className="text-center text-dark">Budgeting Goals</h2>
-                    {goals.map((goal, index) => (
-                        <div key={index} className="goal mb-4 flex-grow-1">
-                            <h4 className="text-primary">{goal.name}</h4>
-                            <p>Goal: ${goal.goal}</p>
-                            <div className="progress" style={{ height: "20px" }}>
-                                <div className="progress-bar bg-success" style={{ width: `${goal.progress/goal.goal * 100}%`}}></div>
-                            </div>
-                            <p>Progress: ${goal.progress} / ${goal.goal}</p>
-                            <button className="btn btn-danger" onClick={() => removeGoal(index)}>Remove</button>
-                        </div>
-                    ))}
-                    <input type="text" className="form-control mb-2" placeholder="Goal Name" value={goalName} onChange={(e) => setGoalName(e.target.value)} />
-                    <input type="number" className="form-control mb-2" placeholder="Goal Amount" value={goalAmount} onChange={(e) => setGoalAmount(e.target.value)} />
-                    <input type="number" className="form-control mb-2" placeholder="Progress Amount" value={goalProgress} onChange={(e) => setGoalProgress(e.target.value)} />
-                    <button className="btn btn-primary w-100 mt-auto" onClick={addNewGoal}>Add New Goal</button>
-                </div>
-            </div>
+
+            <GoalManager />
     
             <div className="col-md-6 col-lg-3 d-flex flex-column">
                 <div id="chat-box-placeholder" className="bg-white p-4 rounded shadow-sm d-flex flex-column h-100">

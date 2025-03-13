@@ -3,8 +3,6 @@ import './app.css';
 
 export function Accounts() {
     const [accountsLinked, setAccountsLinked] = useState(false);
-    const [cryptoSymbol, setCryptoSymbol] = useState('');
-    const [cryptoPrice, setCryptoPrice] = useState(null);
 
     useEffect(() => {
         const linked = localStorage.getItem('accounts_linked');
@@ -21,16 +19,6 @@ export function Accounts() {
     const removeAccounts = () => {
         localStorage.removeItem('accounts_linked');
         setAccountsLinked(false);
-    };
-
-    const fetchCryptoPrice = async () => {
-        const response = await fetch(`https://api.coinpaprika.com/v1/tickers/${cryptoSymbol}`);
-        const data = await response.json();
-        if (data.quotes && data.quotes.USD) {
-            setCryptoPrice(data.quotes.USD.price);
-        } else {
-            setCryptoPrice('Invalid symbol');
-        }
     };
 
     return (  
@@ -53,25 +41,10 @@ export function Accounts() {
             ) : (
                 <button className="btn btn-primary" onClick={linkAccounts}>Link Accounts</button>
             )}
-
-            
     
         </div>
         </div>
     </div>
-    <div className="crypto-price-container mt-4">
-                <input 
-                    type="text" 
-                    className="form-control mb-2" 
-                    placeholder="Ex: btc-bitcoin" 
-                    value={cryptoSymbol} 
-                    onChange={(e) => setCryptoSymbol(e.target.value)} 
-                />
-                <button className="btn btn-primary" onClick={fetchCryptoPrice}>Fetch Crypto Price</button>
-                {cryptoPrice && (
-                    <p className="mt-2">Crypto Price: ${cryptoPrice}</p>
-                )}
-            </div>
     </main>
     );
 }
