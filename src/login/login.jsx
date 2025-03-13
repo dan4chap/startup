@@ -1,52 +1,11 @@
 import React from 'react';
 import './app.css';
 import { BrowserRouter, Routes, Route, NavLink, useNavigate } from 'react-router-dom';
+import { Unauthenticated } from './unauthenticated';
+import { Authenticated } from './authenticated';
+import { AuthState } from './authState';
 
 export function Login({ setUser }) {
-    const [text, setText] = React.useState('');
-    const navigate = useNavigate();
-    const [userName, setUserName] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [displayError, setDisplayError] = React.useState(null);
-
-    async function loginUser() {
-        loginOrCreate(`/api/auth/login`);
-    }
-
-    async function createUser() {
-        loginOrCreate(`/api/auth/create`);
-    }
-
-    function textChange(e) {
-        setText(e.target.value);
-    }
-
-    async function loginOrCreate(endpoint) {
-        try {
-            const response = await fetch(endpoint, {
-            method: 'post',
-            body: JSON.stringify({ email: userName, password: password }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-            });
-        
-            if (response?.status === 200) {
-                const body = await response.json();
-                console.log('Login/create response:', body);
-                localStorage.setItem('userName', body.email); // Store user email
-                setUser(body.email); // Update user state
-                navigate('/dashboard');
-            } else {
-                const body = await response.json();
-                setDisplayError(`⚠ Error: ${body.msg}`);
-            }
-        } catch (error) {
-            console.error('Error during login/create:', error);
-        }
-    }
-        
-
     return (  
     <main className="container-fluid">
     <div className="login-background">
