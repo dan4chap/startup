@@ -57,7 +57,7 @@ export function Unauthenticated(props) {
         <Button className="btn-custom mt-2 p-1" onClick={loginUser}>Submit</Button>
         <Button className="btn-custom mt-1 p-1" onClick={createUser}>Create</Button>
         <Button variant="link">Reset your password</Button>
-        {displayError && <MessageDialog message={displayError} />}
+        <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
       </div>
     </div>
   );

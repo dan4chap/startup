@@ -15,6 +15,7 @@ export function Authenticated(props) {
       })
       .finally(() => {
         localStorage.removeItem('userName');
+        localStorage.removeItem('accounts_linked');
         props.onLogout();
       });
   }
