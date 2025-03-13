@@ -5,25 +5,37 @@ import { Unauthenticated } from './unauthenticated';
 import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
 
-export function Login({ userName, authState, onAuthChange }) {
-    return (  
-    <main className="container-fluid">
+export function Login() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const [authState, setAuthState] = React.useState(AuthState.Unknown);
+
+  React.useEffect(() => {
+    if (userName) {
+      setAuthState(AuthState.Authenticated);
+    } else {
+      setAuthState(AuthState.Unauthenticated);
+    }
+  }, [userName]);
+
+  function onAuthChange(userName, authState) {
+    setUserName(userName);
+    setAuthState(authState);
+  }
+
+  return (
     <div className="login-background">
-        <div className="container d-flex justify-content-center align-items-center" type="page-format">
-        <div className="form-container">
-                <div className="mb-4">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Login</label>
-                    <input type="email" className="form-control form-control-xl fs-2" id="exampleInputEmail1" aria-describedby="emailHelp" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder='your@email.com'/>
-                </div>
-                <div className="mb-4">
-                    <input type="password" className="form-control form-control-xl fs-2" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)} placeholder='password'/>
-                    <div href="#" id="passwordHelp" className="form-text">Reset your password</div>
-                </div>
-                <button type="submit" className="btn btn-primary btn-lg btn-custom" >Submit</button>
-                <button type="submit" className="btn btn-primary btn-lg btn-custom mt-1" >Create</button>
-        </div>
+      {authState === AuthState.Authenticated && (
+        <Authenticated
+          userName={userName}
+          onLogout={() => onAuthChange('', AuthState.Unauthenticated)}
+        />
+      )}
+      {authState === AuthState.Unauthenticated && (
+        <Unauthenticated
+          userName={userName}
+          onLogin={(loginUserName) => onAuthChange(loginUserName, AuthState.Authenticated)}
+        />
+      )}
     </div>
-    </div>
-    </main>
-    );
+  );
 }
