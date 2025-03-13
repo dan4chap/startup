@@ -33,7 +33,10 @@ export default function App() {
                         <Navbar.Collapse id="navbarNavAltMarkup">
                             <Nav className="ms-auto">
                             {userName ? (
-                                <Nav.Link as={NavLink} to="/" onClick={handleLogout}>
+                                <Nav.Link as={NavLink} to="/" onClick={() => {
+                                    localStorage.removeItem('userName');
+                                    setUserName('');
+                                }}>
                                 Logout
                                 </Nav.Link>
                             ) : (
@@ -58,7 +61,20 @@ export default function App() {
                     </header>
 
                 <Routes>
-                    <Route path='/' element={<Login setUser={setUser} />} exact />
+                <Route
+                    path='/'
+                    element={
+                    <Login
+                        userName={userName}
+                        authState={authState}
+                        onAuthChange={(userName, authState) => {
+                        setAuthState(authState);
+                        setUserName(userName);
+                        }}
+                    />
+                    }
+                    exact
+                />
                     <Route path='/dashboard' element={<Dashboard user={userName} />} />
                     <Route path='/accounts' element={<Accounts />} />
                 </Routes>

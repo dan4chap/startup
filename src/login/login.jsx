@@ -5,7 +5,7 @@ import { Unauthenticated } from './unauthenticated';
 import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
 
-export function Login({ setUser }) {
+export function Login({ userName, authState, onAuthChange }) {
     return (  
     <main className="container-fluid">
     <div className="login-background">
@@ -19,8 +19,8 @@ export function Login({ setUser }) {
                     <input type="password" className="form-control form-control-xl fs-2" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)} placeholder='password'/>
                     <div href="#" id="passwordHelp" className="form-text">Reset your password</div>
                 </div>
-                <button type="submit" className="btn btn-primary btn-lg btn-custom" onClick={loginUser}>Submit</button>
-                <button type="submit" className="btn btn-primary btn-lg btn-custom" onClick={createUser}>Create</button>
+                <button type="submit" className="btn btn-primary btn-lg btn-custom" >Submit</button>
+                <button type="submit" className="btn btn-primary btn-lg btn-custom mt-1" >Create</button>
         </div>
     </div>
     </div>
