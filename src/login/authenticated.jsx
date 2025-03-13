@@ -22,7 +22,7 @@ export function Authenticated(props) {
   return (
     <div className="container d-flex justify-content-center align-items-center">
       <div className="form-container">
-        <h2 className="form-label">Welcome, {props.userName}!</h2>
+        <h2 className="form-label">{props.userName}</h2>
         <Button className="btn-custom" onClick={logout}>Logout</Button>
       </div>
     </div>

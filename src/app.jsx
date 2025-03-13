@@ -32,27 +32,14 @@ export default function App() {
                         {/* Nav items aligned to the right */}
                         <Navbar.Collapse id="navbarNavAltMarkup">
                             <Nav className="ms-auto">
-                            {userName ? (
-                                <Nav.Link as={NavLink} to="/" onClick={() => {
-                                    localStorage.removeItem('userName');
-                                    setUserName('');
-                                }}>
-                                Logout
-                                </Nav.Link>
-                            ) : (
-                                <Nav.Link as={NavLink} to="/">
-                                Login
-                                </Nav.Link>
-                            )}
-                            {userName && (
+                            {authState === AuthState.Authenticated ? (
                                 <>
-                                <Nav.Link as={NavLink} to="/dashboard">
-                                    Dashboard
-                                </Nav.Link>
-                                <Nav.Link as={NavLink} to="/accounts">
-                                    Connected Accounts
-                                </Nav.Link>
+                                <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
+                                <Nav.Link as={NavLink} to="/accounts">Connected Accounts</Nav.Link>
+                                <Nav.Link as={NavLink} to="/">Logout</Nav.Link>
                                 </>
+                            ) : (
+                                <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
                             )}
                             </Nav>
                         </Navbar.Collapse>
@@ -61,7 +48,7 @@ export default function App() {
                     </header>
 
                 <Routes>
-                <Route
+                    <Route
                     path='/'
                     element={
                     <Login
@@ -74,7 +61,7 @@ export default function App() {
                     />
                     }
                     exact
-                />
+                    />
                     <Route path='/dashboard' element={<Dashboard user={userName} />} />
                     <Route path='/accounts' element={<Accounts />} />
                 </Routes>
