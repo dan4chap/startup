@@ -10,12 +10,12 @@ import { Accounts } from './accounts/accounts';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 export default function App() {
-    const [user, setUser] = React.useState(localStorage.getItem('user') || null);
+    const [userName, setUser] = React.useState(localStorage.getItem('userName') || '');
 
     // Func to handle logout
     const handleLogout = () => {
-        localStorage.removeItem('user'); // Remove user from localStorage
-        setUser(null); // Clear the user state
+        localStorage.removeItem('userName'); // Remove user from localStorage
+        setUser(''); // Clear the user state
     };
 
     return (
@@ -35,7 +35,7 @@ export default function App() {
                         {/* Nav items aligned to the right */}
                         <Navbar.Collapse id="navbarNavAltMarkup">
                             <Nav className="ms-auto">
-                            {user ? (
+                            {userName ? (
                                 <Nav.Link as={NavLink} to="/" onClick={handleLogout}>
                                 Logout
                                 </Nav.Link>
@@ -44,7 +44,7 @@ export default function App() {
                                 Login
                                 </Nav.Link>
                             )}
-                            {user && (
+                            {userName && (
                                 <>
                                 <Nav.Link as={NavLink} to="/dashboard">
                                     Dashboard
@@ -62,7 +62,7 @@ export default function App() {
 
                 <Routes>
                     <Route path='/' element={<Login setUser={setUser} />} exact />
-                    <Route path='/dashboard' element={<Dashboard user={user} />} />
+                    <Route path='/dashboard' element={<Dashboard user={userName} />} />
                     <Route path='/accounts' element={<Accounts />} />
                 </Routes>
 
