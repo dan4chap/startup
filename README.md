@@ -107,11 +107,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Installed Express with NPM. Default port on 3000
+- [x] **Static middleware for frontend** - Simple endpoints in service/index.
+- [x] **Calls to third party endpoints** - On the accounts page you can search crpyto prices using coinpaprika
+- [x] **Backend service endpoints** - Goals are created and login is used through api
+- [x] **Frontend calls service endpoints** - Front end allows you to make goals and login is using the api
+- [x] **Supports registration, login, logout, and restricted endpoint** - Fully supports authentication
 
 ## 🚀 DB/Login deliverable
 
