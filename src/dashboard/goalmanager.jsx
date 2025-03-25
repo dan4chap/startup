@@ -17,7 +17,7 @@ function GoalManager(user) {
     try {
       const response = await fetch('/api/goals', {
         method: 'POST',
-        body: JSON.stringify({ name: newGoalName, goal: newGoalValue }),
+        body: JSON.stringify({ name: newGoalName, goal: newGoalValue, email: user.user }),
         headers: {
           'Content-Type': 'application/json',
         },

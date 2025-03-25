@@ -104,10 +104,10 @@ function setAuthCookie(res, authToken) {
 }
 
 // Create a new goal
-apiRouter.post('/goals', verifyAuth, async (req, res) => {
+apiRouter.post('/goals', async (req, res) => {
     try {
       console.log('Received data:', req.body); // Log incoming data
-      const { name, goal } = req.body;
+      const { name, goal, email } = req.body;
   
       if (!name || !goal) {
         res.status(400).send({ msg: 'Name and goal are required' });
@@ -115,13 +115,14 @@ apiRouter.post('/goals', verifyAuth, async (req, res) => {
       }
   
       const newGoal = {
-        id: uuid.v4(),
+        email,
         name,
         goal,
         progress: 0,
       };
+      const goals = await DB.addGoal(newGoal);
   
-      goals.push(newGoal);
+      //goals.push(newGoal);
       res.send(newGoal);
     } catch (error) {
       console.error('Error creating goal:', error);
