@@ -2,13 +2,10 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
-
 const app = express();
-const authCookieName = 'token';
+const DB = require('./database.js');
 
-// The scores and users are saved in memory and disappear whenever the service is restarted.
-let users = [];
-let goals = []; // Initialize goals array
+const authCookieName = 'token';
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -58,29 +55,43 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
-    res.clearCookie(authCookieName);
-    res.status(204).end();
+    DB.updateUser(user);
+  }
+  res.clearCookie(authCookieName);
+  res.status(204).end();
+});
+
+const verifyAuth = async (req, res, next) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    next();
   } else {
     res.status(401).send({ msg: 'Unauthorized' });
   }
-});
+};
 
 // Create a new user
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
+
   const user = {
     email: email,
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
+
   return user;
 }
 
 // Find a user by field and value
 async function findUser(field, value) {
   if (!value) return null;
-  return users.find((u) => u[field] === value);
+
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 // Set authentication cookie in the HTTP response
@@ -93,7 +104,7 @@ function setAuthCookie(res, authToken) {
 }
 
 // Create a new goal
-apiRouter.post('/goals', async (req, res) => {
+apiRouter.post('/goals', verifyAuth, async (req, res) => {
     try {
       console.log('Received data:', req.body); // Log incoming data
       const { name, goal } = req.body;
@@ -123,7 +134,13 @@ apiRouter.post('/goals', async (req, res) => {
 // Get all goals
 apiRouter.get('/goals', async (req, res) => {
   try {
-    res.send(goals);
+    const goals = await DB.getGoals(req.query.email);
+    if (goals.numReturned === 0) {
+      return;
+    }
+    else {
+      res.send(goals);
+    }
   } catch (error) {
     console.error('Error fetching goals:', error);
     res.status(500).send({ msg: 'Failed to fetch goals' });
@@ -131,7 +148,7 @@ apiRouter.get('/goals', async (req, res) => {
 });
 
 // Update a goal
-apiRouter.put('/goals/:id', async (req, res) => {
+apiRouter.put('/goals/:id', verifyAuth, async (req, res) => {
   try {
     const id = req.params.id;
     const goal = goals.find((g) => g.id === id);
@@ -153,7 +170,7 @@ apiRouter.put('/goals/:id', async (req, res) => {
 });
 
 // Delete a goal
-apiRouter.delete('/goals/:id', async (req, res) => {
+apiRouter.delete('/goals/:id', verifyAuth, async (req, res) => {
     try {
       const id = req.params.id;
       const index = goals.findIndex((g) => g.id === id);
@@ -169,7 +186,6 @@ apiRouter.delete('/goals/:id', async (req, res) => {
       res.status(500).send({ msg: 'Failed to delete goal' });
     }
   });
- 
 
 // Default error handler
 app.use(function (err, req, res, next) {
@@ -181,6 +197,6 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

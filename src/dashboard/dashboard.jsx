@@ -77,7 +77,7 @@ export function Dashboard({ user }) {
                 </div>
             </div>
 
-            <GoalManager />
+            <GoalManager user={user} />
     
             <div className="col-md-6 col-lg-3 d-flex flex-column">
                 <div id="chat-box-placeholder" className="bg-white p-4 rounded shadow-sm d-flex flex-column h-100">
