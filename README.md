@@ -118,11 +118,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **User registration** - I did not complete this part of the deliverable.
-- [ ] **User login and logout** - I did not complete this part of the deliverable.
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Restricts functionality based on authentication** - I did not complete this part of the deliverable.
+- [x] **User registration** - Stores user authentication in the database.
+- [x] **User login and logout** - Functionality for this works perfectly.
+- [x] **Stores data in MongoDB** - Budgeting goals are held in database and work properly. Can be deleted and it will be deleted from database. Based on who logins, it will display the goals from that user.
+- [x] **Stores credentials in MongoDB** - User information is stored in the databate
+- [x] **Restricts functionality based on authentication** - You can only access budgeting goals and the dashboard if you are signed in. Works properly
 
 ## 🚀 WebSocket deliverable
 
