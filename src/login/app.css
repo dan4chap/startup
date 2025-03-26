@@ -1,4 +1,13 @@
 /* Apply styles to the whole page */
+html {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4edd9;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    
+}
+
 .app {
     height: 100%;
     display: flex;
@@ -305,6 +314,18 @@ ul.flex-grow-1 {
     line-height: 1.6;
     margin-bottom: 1rem;
     text-align: center; /* Center-align text */
+}
+
+.progress {
+    height: 20px;
+    border-radius: 20px;
+}
+
+.loadingimg {
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Responsive font sizes using media queries */
