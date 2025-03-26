@@ -42,6 +42,11 @@ function getGoals(email) {
     return goalCollection.find({ email: email }); // Returns a cursor
 }
 
+async function deleteGoal(id) {
+    const { ObjectId } = require('mongodb'); // Import ObjectId to handle MongoDB IDs
+    return goalCollection.deleteOne({ _id: new ObjectId(id) });
+}
+
 module.exports = {
     getUser,
     getUserByToken,
@@ -49,4 +54,5 @@ module.exports = {
     updateUser,
     addGoal,
     getGoals,
+    deleteGoal,
 };

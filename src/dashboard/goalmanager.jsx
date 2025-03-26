@@ -22,13 +22,13 @@ function GoalManager({ user }) {
     }
 
     fetchGoals();
-  }, [user.email]); // Dependency array ensures this runs when the user email changes
+  }, [user]); // Dependency array ensures this runs when the user email changes
 
   async function createGoal() {
     try {
       const response = await fetch('/api/goals', {
         method: 'POST',
-        body: JSON.stringify({ name: newGoalName, goal: newGoalValue, email: user.email }),
+        body: JSON.stringify({ name: newGoalName, goal: newGoalValue, email: user }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -55,12 +55,16 @@ function GoalManager({ user }) {
       });
 
       if (response.ok) {
-        setGoals(goals.filter((goal) => goal.id !== id)); // Remove the goal from the state
+        // Filter out the deleted goal from the state
+        setGoals(goals.filter((goal) => goal._id !== id));
       } else {
-        console.error('Failed to delete goal');
+        const errorText = await response.text();
+        console.error('Failed to delete goal:', errorText);
+        setDisplayError(`⚠ Error: ${response.status} - ${errorText}`);
       }
     } catch (error) {
       console.error('Error deleting goal:', error);
+      setDisplayError(`⚠ Error: ${error.message}`);
     }
   }
 

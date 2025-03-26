@@ -167,22 +167,22 @@ apiRouter.put('/goals/:id', verifyAuth, async (req, res) => {
 });
 
 // Delete a goal
-apiRouter.delete('/goals/:id', verifyAuth, async (req, res) => {
+apiRouter.delete('/goals/:id', async (req, res) => {
     try {
-      const id = req.params.id;
-      const index = goals.findIndex((g) => g.id === id);
-      if (index === -1) {
-        res.status(404).send({ msg: 'Goal not found' });
-        return;
-      }
-  
-      goals.splice(index, 1);
-      res.status(204).end();
+        const id = req.params.id;
+        const result = await DB.deleteGoal(id); // Use the deleteGoal method
+
+        if (result.deletedCount === 0) {
+            res.status(404).send({ msg: 'Goal not found' });
+            return;
+        }
+
+        res.status(204).end(); // Successfully deleted
     } catch (error) {
-      console.error('Error deleting goal:', error);
-      res.status(500).send({ msg: 'Failed to delete goal' });
+        console.error('Error deleting goal:', error);
+        res.status(500).send({ msg: 'Failed to delete goal' });
     }
-  });
+});
 
 // Default error handler
 app.use(function (err, req, res, next) {
