@@ -135,13 +135,9 @@ apiRouter.post('/goals', async (req, res) => {
 // Get all goals
 apiRouter.get('/goals', async (req, res) => {
   try {
-    const goals = await DB.getGoals(req.query.email);
-    if (goals.numReturned === 0) {
-      return;
-    }
-    else {
-      res.send(goals);
-    }
+    const goalsCursor = await DB.getGoals(req.query.email);
+    const goals = await goalsCursor.toArray(); // Convert cursor to array
+    res.send(goals);
   } catch (error) {
     console.error('Error fetching goals:', error);
     res.status(500).send({ msg: 'Failed to fetch goals' });

@@ -39,7 +39,7 @@ async function addGoal(goal) {
 }
 
 function getGoals(email) {
-    return goalCollection.find({ email: email });
+    return goalCollection.find({ email: email }); // Returns a cursor
 }
 
 module.exports = {
