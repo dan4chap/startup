@@ -16,17 +16,6 @@ html {
     font-family: 'Times New Roman', Times, serif, sans-serif;
     
 }
-
-header {
-    margin: 4px;
-    padding: 0px;
-    display: flex;
-    background-color: #f4edd9;
-    border-radius: 20px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
 /*#8aa696*/
 main {
     min-height: 70vh;
@@ -56,7 +45,7 @@ footer {
     margin: 0px;
     font-size: 2em;
     font-weight: bold;
-    padding: 20px;
+    padding: 0px;
     background-color: #f4edd9;
     border-radius: 20px;
     border-top-left-radius: 0px;

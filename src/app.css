@@ -1,4 +1,13 @@
 /* Apply styles to the whole page */
+html {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4edd9;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    
+}
+
 .app {
     height: 100%;
     display: flex;
