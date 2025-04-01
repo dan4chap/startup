@@ -128,8 +128,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - Backend webSocket management exectued in service/index.js .
+- [x] **Frontend makes WebSocket connection** - Frontend makes connection to chat in src/chat/chat.jsx .
+- [x] **Data sent over WebSocket connection** - Typed in chat message sent by JSON representation
+- [x] **WebSocket data displayed** - Messages are properly displayed on all users webpages.
+- [x] **Application is fully functional** - Application is fully functional for the deliverables but doesn't have all  necessary functionality to be a budgeting platform.
