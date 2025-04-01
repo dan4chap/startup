@@ -127,7 +127,6 @@ class ChatClient {
         this.observers.forEach((h) => h({ event, from, msg }));
     }
 }
-
 export default Chat;
 export { ChatClient };
 //const root = ReactDOM.createRoot(document.getElementById('root'));

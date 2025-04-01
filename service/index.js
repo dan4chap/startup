@@ -196,18 +196,19 @@ app.use((_req, res) => {
 });
 
 
-const httpService = app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-server = app.listen(port + 1, () => {
-    console.log(`Listening on ${port}`);
+/*
+const server = app.listen(thing=3000, () => {
+    console.log(`Listening on ${thing}`);
 });
-
+*/
 
 // CREATE A WEBSOCKET SERVER
 
-const socketServer = new WebSocketServer({ server });
+const socketServer = new WebSocketServer({ server});
 
 socketServer.on('connection', (socket) => {
     socket.isAlive = true;

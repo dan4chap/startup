@@ -69,7 +69,7 @@ function GoalManager({ user }) {
   }
 
   return (
-    <div className="col-md-6 col-lg-3 d-flex flex-column">
+    <div className="col-md-6 col-lg-4 d-flex flex-column">
       <div className="bg-green p-4 rounded shadow-sm flex-grow-1 d-flex flex-column">
         <h2 className="text-center text-dark">Budgeting Goals</h2>
         {goals.map((goal) => (

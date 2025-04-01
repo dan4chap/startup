@@ -57,7 +57,7 @@ export function Dashboard({ user }) {
     return (  
     <main className="container-fluid bg-tan p-5">
         <div className="row gy-3">
-            <div className="col-md-6 col-lg-6 d-flex flex-column">
+            <div className="col-md-6 col-lg-7 d-flex flex-column">
                 <div className="bg-green p-3 text-black text-center rounded shadow-sm flex-grow-1">
                     <h1>Welcome, {displayName}</h1>
                 </div>
@@ -78,27 +78,7 @@ export function Dashboard({ user }) {
             </div>
 
             <GoalManager user={user} />
-    
-            <div className="col-md-6 col-lg-3 d-flex flex-column">
-                <div id="chat-box-placeholder" className="bg-white p-4 rounded shadow-sm d-flex flex-column h-100">
-                    <div className="bg-primary text-white p-3 text-center rounded-top">
-                        Chat Box
-                    </div>
-                    <div className="flex-grow-1 p-3 overflow-auto">
-                        {messages.map((message, index) => (
-                            <div key={index} className={`message mb-3 ${index % 2 === 0 ? '' : 'text-end'}`}>
-                                <div className={`bg-${index % 2 === 0 ? 'light' : 'primary'} text-${index % 2 === 0 ? 'black' : 'white'} p-2 rounded`}>
-                                    {message}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="d-flex p-2 border-top">
-                        <input type="text" className="form-control me-2" placeholder="Type a message..." value={newMessage} onChange={(e) => setNewMessage(e.target.value)} />
-                        <button className="btn btn-primary" onClick={addMessage}>➤</button>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </main>
     );

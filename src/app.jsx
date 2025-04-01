@@ -6,6 +6,7 @@ import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Dashboard } from './dashboard/dashboard';
+import { ChatPage } from './chat/chatpage';
 import { Accounts } from './accounts/accounts';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { AuthState } from './login/authState';
@@ -35,6 +36,7 @@ export default function App() {
                             {authState === AuthState.Authenticated ? (
                                 <>
                                 <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
+                                <Nav.Link as={NavLink} to="/chat">Chat</Nav.Link>
                                 <Nav.Link as={NavLink} to="/accounts">Connected Accounts</Nav.Link>
                                 <Nav.Link as={NavLink} to="/">Logout</Nav.Link>
                                 </>
@@ -63,6 +65,7 @@ export default function App() {
                     exact
                     />
                     <Route path='/dashboard' element={<Dashboard user={userName} />} />
+                    <Route path='/chat' element={<ChatPage />} />
                     <Route path='/accounts' element={<Accounts />} />
                 </Routes>
 
