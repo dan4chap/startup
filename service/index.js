@@ -4,7 +4,7 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
-const { WebSocketServer } = require('ws');
+const { WebSocketServer, WebSocket } = require('ws');
 
 const authCookieName = 'token';
 
@@ -195,10 +195,14 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
+
 const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
+server = app.listen(port + 1, () => {
+    console.log(`Listening on ${port}`);
+});
 
 
 // CREATE A WEBSOCKET SERVER

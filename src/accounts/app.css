@@ -370,3 +370,20 @@ ul.flex-grow-1 {
       padding: 20px; /* Smallest padding for mobile phones */
     }
 }
+
+#chat-text {
+    padding: 1em 0;
+}
+.received {
+color: rgb(153, 87, 148);
+margin-left: 0.5em;
+}
+.sent {
+color: rgb(87, 153, 117);
+}
+.system {
+color: rgb(225, 103, 10);
+}
+.name {
+padding: 1em 0;
+}

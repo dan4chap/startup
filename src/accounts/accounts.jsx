@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './app.css';
+import Chat, {ChatClient} from './chat';
 
 export function Accounts() {
     const [accountsLinked, setAccountsLinked] = useState(false);
@@ -72,6 +73,9 @@ export function Accounts() {
                     <p className="mt-2">Crypto Price: ${cryptoPrice}</p>
                 )}
             </div>
+    <div className="chat-container mt-4">
+    <Chat webSocket={new ChatClient()} />
+    </div>
     </main>
     );
 }
