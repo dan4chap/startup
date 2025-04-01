@@ -59,24 +59,29 @@ export function Message({ name, webSocket }) {
 
 export function Conversation({ webSocket }) {
     const [chats, setChats] = React.useState([]);
+
     React.useEffect(() => {
-    webSocket.addObserver((chat) => {
-        setChats((prevMessages) => [...prevMessages, chat]);
-        });
+        const observer = (chat) => {
+            setChats((prevMessages) => [...prevMessages, chat]);
+        };
+
+        webSocket.addObserver(observer);
+
+        return () => {
+            // Remove observer when component unmounts or re-renders
+            webSocket.observers = webSocket.observers.filter((obs) => obs !== observer);
+        };
     }, [webSocket]);
 
     const chatEls = chats.map((chat, index) => (
         <div key={index}>
-        <span className={chat.event}>{chat.from}</span> {chat.msg}
+            <span className={chat.event}>{chat.from}</span> {chat.msg}
         </div>
     ));
 
-    return (
-    <div>
-        <div id='chat-text'>{chatEls}</div>
-    </div>
-    );
-    }
+    return <div id='chat-text'>{chatEls}</div>;
+}
+
 
 
 class ChatClient {

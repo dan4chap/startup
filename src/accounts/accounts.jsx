@@ -6,7 +6,8 @@ export function Accounts() {
     const [accountsLinked, setAccountsLinked] = useState(false);
     const [cryptoSymbol, setCryptoSymbol] = useState('');
     const [cryptoPrice, setCryptoPrice] = useState(null);
-
+    const [chatClient] = useState(new ChatClient());
+    
     useEffect(() => {
         const linked = localStorage.getItem('accounts_linked');
         if (linked) {
@@ -74,7 +75,7 @@ export function Accounts() {
                 )}
             </div>
     <div className="chat-container mt-4">
-    <Chat webSocket={new ChatClient()} />
+    <Chat webSocket={chatClient} />
     </div>
     </main>
     );

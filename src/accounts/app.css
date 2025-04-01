@@ -373,10 +373,10 @@ ul.flex-grow-1 {
 
 #chat-text {
     padding: 1em 0;
+    font-weight: bold;
 }
 .received {
-color: rgb(153, 87, 148);
-margin-left: 0.5em;
+    color: rgb(153, 87, 148);
 }
 .sent {
 color: rgb(87, 153, 117);
