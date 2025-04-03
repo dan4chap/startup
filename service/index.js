@@ -244,7 +244,7 @@ socketServer.on('connection', (socket) => {
 
 // PLAID API SETUP
 const { Configuration, PlaidApi, PlaidEnvironments } = require('plaid');
-const plaidConfig = require('./plaidConfig.json');
+const plaidConfig = require('./plConfig.json');
 
 const configuration = new Configuration({
   basePath: PlaidEnvironments.sandbox, // Use 'development' or 'production' for live environments
