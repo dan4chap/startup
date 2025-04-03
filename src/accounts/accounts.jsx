@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PlaidLink from './plaidLink';
 import './app.css';
 
 export function Accounts() {
@@ -47,6 +48,9 @@ export function Accounts() {
             comes from Plaid.
             </p>
             <p style={{padding_bottom: "10px"}}>Plaid Login Here:</p>
+
+            <PlaidLink />
+            <p style={{padding_bottom: "10px"}}>Link your bank account to your Easy Expenses account.</p>
             
             {accountsLinked ? (
                 <button className="btn btn-danger" onClick={removeAccounts}>Remove Accounts</button>

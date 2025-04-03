@@ -237,3 +237,73 @@ socketServer.on('connection', (socket) => {
         client.ping();
     });
 }, 10000);
+
+
+
+
+
+// PLAID API SETUP
+const { Configuration, PlaidApi, PlaidEnvironments } = require('plaid');
+const plaidConfig = require('./plaidConfig.json');
+
+const configuration = new Configuration({
+  basePath: PlaidEnvironments.sandbox, // Use 'development' or 'production' for live environments
+  baseOptions: {
+    headers: {
+      'PLAID-CLIENT-ID': plaidConfig.PLAID_CLIENT_ID,
+      'PLAID-SECRET': plaidConfig.PLAID_SECRET,
+    },
+  },
+  username: plaidConfig.PLAID_USERNAME,
+  password: plaidConfig.PLAID_PASSWORD,
+});
+
+const plaidClient = new PlaidApi(configuration);
+
+// Create a Link token
+apiRouter.post('/create_link_token', async (req, res) => {
+  try {
+    const response = await plaidClient.linkTokenCreate({
+      user: {
+        client_user_id: 'yo', // Replace with a unique user ID
+      },
+      client_name: 'Your App Name',
+      products: ['transactions'],
+      country_codes: ['US'],
+      language: 'en',
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error creating link token');
+  }
+});
+
+// Exchange public token for access token
+apiRouter.post('/exchange_public_token', async (req, res) => {
+  const { public_token } = req.body;
+  try {
+    const response = await plaidClient.itemPublicTokenExchange({
+      public_token,
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error exchanging public token');
+  }
+});
+
+apiRouter.post('/get_transactions', async (req, res) => {
+  const { access_token } = req.body;
+  try {
+    const response = await plaidClient.transactionsGet({
+      access_token,
+      start_date: '2023-01-01',
+      end_date: '2023-12-31',
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching transactions');
+  }
+});
